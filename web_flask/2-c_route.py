@@ -10,9 +10,11 @@ app = Flask(__name__)
 def hello_HBNB():
     return "Hello HBNB!"
 
+
 @app.route('/hbnb')
 def HBNB():
     return "HBNB"
+
 
 @app.route('/c/<text>')
 def C_is_fun(text):
