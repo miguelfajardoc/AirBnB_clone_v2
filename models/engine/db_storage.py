@@ -39,6 +39,9 @@ class DBStorage():
         if HBNB_ENV == "test":
             metadata.drop_all(self.__engine)
 
+    def close(self):
+        self.__session.remove()
+
     def all(self, cls=None):
         """ bring all the clases from the database acoord to the cls type
         """

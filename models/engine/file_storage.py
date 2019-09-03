@@ -20,6 +20,11 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
+    def close(self):
+        """deserializing the JSON file to objects
+        """
+        self.reload()
+
     def delete(self, obj=None):
         """ delete a given object
         """
@@ -35,7 +40,6 @@ class FileStorage:
         Return:
             returns a dictionary of __object
         """
-
         if cls:
             all_obj = {}
             clase = cls.__name__
