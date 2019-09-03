@@ -40,7 +40,7 @@ class DBStorage():
             metadata.drop_all(self.__engine)
 
     def close(self):
-        self.__session.remove()
+        self.__session.close()
 
     def all(self, cls=None):
         """ bring all the clases from the database acoord to the cls type
