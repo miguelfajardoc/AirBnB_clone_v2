@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""module hello flask"""
-
-from flask import Flask, render_template
-from models import storage, State
-import operator
+"""script that starts a Flask web application """
+from flask import Flask
+from flask import render_template
+from models import storage
+from models import State
+from models import City
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -11,23 +12,23 @@ app.url_map.strict_slashes = False
 
 @app.route('/cities_by_states')
 def states():
-    states = storage.all(State)
-    cities_by_states = {}
-    states_l = {}
+    dict_states = {}
+    dict_cities = {}
 
-    for state in states:
-        cities_by_states[states[state].id] = states[state].cities
+    states_dic = storage.all(State)
+    for key, value in states_dic.items():
+        dict_states[value.id] = value.name
 
+    for iter in states_dic:
+        dict_cities[states_dic[iter].id] = states_dic[iter].cities
 
-    for key in states:
-        states_l[states[key].id] = states[key].name
-
-    return render_template('8-cities_by_states.html', states=states_l, cities=cities_by_states)
+    return render_template('8-cities_by_states.html', state=dict_states,
+                           city=dict_cities)
 
 
 @app.teardown_appcontext
 def teardown(exception=None):
     storage.close()
 
-app.debug = True
-app.run(host='0.0.0.0', port=5000)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
