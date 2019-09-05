@@ -15,7 +15,7 @@ def states():
     cities_by_states = {}
     iter = 0
     for state in states:
-        cities_by_states[str(states[state].id)] = states[state].cities
+        cities_by_states[states[state].id] = states[state].cities
 
     states_l = []
     for key, values in states.items():

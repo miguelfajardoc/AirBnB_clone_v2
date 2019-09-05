@@ -11,7 +11,7 @@
 	        <UL>
 		  {% for city in cities -%}
 		  {% for ciudad in cities[city] | sort(attribute='name') -%}
-		  {% if city == values[0] %}
+		  {% if ciudad.state_id == values[0] %}
 		        <LI>{{ ciudad.id }}: <B>{{ ciudad.name }}</B>
 		  {% endif %}
 		  {%- endfor %}
