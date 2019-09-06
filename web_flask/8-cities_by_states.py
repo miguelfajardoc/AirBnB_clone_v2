@@ -13,7 +13,7 @@ app.url_map.strict_slashes = False
 def states():
     states = storage.all(State)
 
-    return render_template('8-cities_by_states.html', states=states )
+    return render_template('8-cities_by_states.html', states=states)
 
 
 @app.teardown_appcontext
